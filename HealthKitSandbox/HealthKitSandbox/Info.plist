@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>수면 패턴, 심박수 등의 건강 정보를 이용해 진료 시 도움이 되는 통계와 추세를 보여주려고 합니다.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>수면 패턴, 심박수 등의 건강 정보를 이용해 진료 시 도움이 되는 통계와 추세를 보여주려고 합니다.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
