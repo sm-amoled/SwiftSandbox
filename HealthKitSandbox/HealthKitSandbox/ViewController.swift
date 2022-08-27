@@ -48,22 +48,42 @@ class ViewController: UIViewController {
                                   sortDescriptors: [sortDescriptor]) { (sample, result, error) in
             guard error == nil else { return }
             
-            // 가져온 결과인 result를 가지고 작업 수행하기
-            let data = result![0] as! HKQuantitySample
-            let unit = HKUnit(from: "count/min")
-            let latestHeartRate = data.quantity.doubleValue(for: unit)
-            print("Latest Heart Rate : \(latestHeartRate)")
-            
             let dateFormatter: DateFormatter = {
                let df = DateFormatter()
                 df.dateFormat = "yyyy/MM/dd hh:mm:ss"
                 return df
             }()
             
-            let startDate = dateFormatter.string(from: data.startDate)
-            let endDate = dateFormatter.string(from: data.endDate)
-            print("StartDate \(startDate) : EndDate \(endDate)")
+            print("분당 심박수가 100 이상일 때")
+            guard let result = result else { return }
             
+            print(Calendar.current.dateComponents([.day], from: startDate!, to: Date()).day ?? Int(31))
+            var listOnDate: [[HKQuantitySample]] = Array.init(repeating: [], count: 32)
+            
+            let unit = HKUnit(from: "count/min")
+            
+            for sample in result {
+                let data = sample as! HKQuantitySample
+                if data.quantity.doubleValue(for: unit) >= 100 {
+                    listOnDate[Calendar.current.dateComponents([.day], from: data.startDate).day ?? 30].append(data)
+                }
+            }
+            
+            var count = Array.init(repeating: 0, count: 24)
+            
+            for dataOnDay in listOnDate {
+                var exist = Array.init(repeating: false, count: 24)
+                
+                for data in dataOnDay {
+                    exist[Calendar.current.dateComponents([.hour], from: data.startDate).hour ?? 0] = true
+                }
+                
+                for idx in 0..<24 {
+                    count[idx] = count[idx] + (exist[idx] ? 1 : 0)
+                }
+            }
+            
+            print(count)
         }
         healthStore.execute(query)
     }
