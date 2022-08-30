@@ -15,9 +15,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKv-UM-gRT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arscnView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KKv-UM-gRT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="30W-lB-pkS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KKv-UM-gRT" secondAttribute="trailing" id="6C2-oi-WNr"/>
+                            <constraint firstItem="KKv-UM-gRT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Oh3-eR-VvZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KKv-UM-gRT" secondAttribute="bottom" id="T6Y-jk-ToB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sceneView" destination="KKv-UM-gRT" id="OZf-pE-yQg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

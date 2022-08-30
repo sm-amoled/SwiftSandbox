@@ -15,6 +15,9 @@ import AudioToolbox
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
+    @IBOutlet private weak var sceneView: ARSCNView!
+    private var arConfiguration = ARWorldTrackingConfiguration()
+    
     var previewLayer: AVCaptureVideoPreviewLayer?
     var videoCapture = VideoCapture()
     
@@ -25,6 +28,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         setupVideoPreview()
         videoCapture.predictor.delegate = self
+        
+//        sceneView.session.run(arConfiguration)
+        sceneView.delegate = self
+        
+        let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
+        sun.position = SCNVector3(0, 0, -1)
+        sun.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "sun-diffuse")
+        sceneView.scene.rootNode.addChildNode(sun)
     }
     
     private func setupVideoPreview() {
@@ -53,7 +64,7 @@ extension ViewController: PredictorDelegate {
             })
             
             DispatchQueue.main.async {
-                AudioServicesPlayAlertSound(SystemSoundID(1))
+                AudioServicesPlayAlertSound(SystemSoundID(1300))
                 print("Parsley")
             }
         }
