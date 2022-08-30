@@ -13,23 +13,24 @@ import AVFoundation
 import AudioToolbox
 
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet private weak var sceneView: ARSCNView!
     private var arConfiguration = ARWorldTrackingConfiguration()
     
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var videoCapture = VideoCapture()
+//    var videoCapture = VideoCapture()
     
+    let predictor = Predictor()
     var pointsLayer = CAShapeLayer()
     var isParsleyDetected = false
     
     
     override func viewDidLoad() {
         setupVideoPreview()
-        videoCapture.predictor.delegate = self
-        
-//        sceneView.session.run(arConfiguration)
+//        videoCapture.predictor.delegate = self
+        arConfiguration.planeDetection = .horizontal
+        sceneView.session.run(arConfiguration)
         sceneView.delegate = self
         
         let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
@@ -39,8 +40,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func setupVideoPreview() {
-        videoCapture.startCaptureSession()
-        previewLayer = AVCaptureVideoPreviewLayer(session: videoCapture.captureSession)
+//        videoCapture.startCaptureSession()
+//        previewLayer = AVCaptureVideoPreviewLayer(session: videoCapture.captureSession)
+        
+        
         
         guard let previewLayer = previewLayer else {
             return
@@ -89,4 +92,55 @@ extension ViewController: PredictorDelegate {
             self.pointsLayer.didChangeValue(for: \.path)
         }
     }
+}
+
+extension ViewController: ARSCNViewDelegate {
+//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+//        guard let device = sceneView.device else { return nil }
+//        let plane = ARSCNPlaneGeometry(device: device)
+//        let planeNode = SCNNode(geometry: plane)
+//
+//        planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.black
+//
+//        return planeNode
+//    }
+//
+//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+//        guard let planeAnchor = anchor as? ARPlaneAnchor,
+//              let planeGeometry = node.geometry as? ARSCNPlaneGeometry else { return }
+//        planeGeometry.firstMaterial?.diffuse.contents = UIColor.black
+//        planeGeometry.update(from: planeAnchor.geometry)
+//    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else { return }
+        let sampleBuffer = getCMSampleBuffer(pixelBuffer)
+        
+        
+        predictor.estimation(sampleBuffer: sampleBuffer)
+    }
+}
+
+fileprivate func getCMSampleBuffer(_ inputPixelBuffer: CVPixelBuffer) -> CMSampleBuffer {
+    var pixelBuffer: CVPixelBuffer = inputPixelBuffer
+
+    var info = CMSampleTimingInfo()
+    info.presentationTimeStamp = CMTime.zero
+    info.duration = CMTime.invalid
+    info.decodeTimeStamp = CMTime.invalid
+
+    var formatDesc: CMFormatDescription?
+    CMVideoFormatDescriptionCreateForImageBuffer(allocator: kCFAllocatorDefault,
+                                                 imageBuffer: pixelBuffer,
+                                                 formatDescriptionOut: &formatDesc)
+
+    var sampleBuffer: CMSampleBuffer?
+
+    CMSampleBufferCreateReadyWithImageBuffer(allocator: kCFAllocatorDefault,
+                                             imageBuffer: pixelBuffer,
+                                             formatDescription: formatDesc!,
+                                             sampleTiming: &info,
+                                             sampleBufferOut: &sampleBuffer)
+
+    return sampleBuffer!
 }

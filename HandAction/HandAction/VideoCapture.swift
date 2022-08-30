@@ -28,7 +28,7 @@ class VideoCapture: NSObject {
     }
     
     func startCaptureSession() {
-        captureSession.startRunning()
+//        captureSession.startRunning()
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoDispatchQueue"))
     }
 }
