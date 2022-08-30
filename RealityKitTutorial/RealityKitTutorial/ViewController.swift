@@ -12,13 +12,14 @@ import Combine
 class ViewController: UIViewController {
     
     @IBOutlet var arView: ARView!
+    var planeAnchor: AnchorEntity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // m 단위 ... minimum bound는 20cmX20cm
-        let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.2, 0.2])
-        arView.scene.addAnchor(anchor)
+        planeAnchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.2, 0.2])
+        arView.scene.addAnchor(planeAnchor)
         
         var cards: [Entity] = []
         for _ in 1...8 {
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
             
             card.position = SIMD3(x: x*0.1, y: 0, z: z*0.1)
             //            card.position = [x*0.1, 0, z*0.1]
-            anchor.addChild(card)
+            planeAnchor.addChild(card)
             
             let boxSize: Float = 0.7
             let occlusionBoxMesh = MeshResource.generateBox(size: boxSize)
@@ -49,7 +50,7 @@ class ViewController: UIViewController {
             
             occlusionBox.position.y = -boxSize/2
             
-            anchor.addChild(occlusionBox)
+            planeAnchor.addChild(occlusionBox)
             
             var cancellable: AnyCancellable? = nil
             cancellable = ModelEntity.loadModelAsync(named: "01")
@@ -63,7 +64,7 @@ class ViewController: UIViewController {
                 }, receiveValue: { entities in
                     var objects: [ModelEntity] = []
                     for entity in entities {
-                        entity.setScale(SIMD3<Float>(0.002, 0.002, 0.002), relativeTo: anchor)
+                        entity.setScale(SIMD3<Float>(0.002, 0.002, 0.002), relativeTo: self.planeAnchor)
                         entity.generateCollisionShapes(recursive: true)
                         for _ in 1...2 {
                             objects.append(entity.clone(recursive: true))
