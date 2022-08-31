@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     private var arConfiguration = ARWorldTrackingConfiguration()
     
     var previewLayer: AVCaptureVideoPreviewLayer?
-//    var videoCapture = VideoCapture()
+    //    var videoCapture = VideoCapture()
     
     let predictor = Predictor()
     var pointsLayer = CAShapeLayer()
@@ -28,20 +28,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         setupVideoPreview()
-//        videoCapture.predictor.delegate = self
-        arConfiguration.planeDetection = .horizontal
+        //        videoCapture.predictor.delegate = self
+//        arConfiguration.planeDetection = .horizontal
+        
+        sceneView.scene.physicsWorld.gravity = SCNVector3(x: 0, y: -1, z: 0)
         sceneView.session.run(arConfiguration)
         sceneView.delegate = self
         
-        let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
-        sun.position = SCNVector3(0, 0, -1)
-        sun.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "sun-diffuse")
-        sceneView.scene.rootNode.addChildNode(sun)
+        predictor.delegate = self
+        
+//        let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
+//        sun.position = SCNVector3(0, 0, -1)
+//        sun.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "sun-diffuse")
+//        sceneView.scene.rootNode.addChildNode(sun)
     }
     
     private func setupVideoPreview() {
-//        videoCapture.startCaptureSession()
-//        previewLayer = AVCaptureVideoPreviewLayer(session: videoCapture.captureSession)
+        //        videoCapture.startCaptureSession()
+        //        previewLayer = AVCaptureVideoPreviewLayer(session: videoCapture.captureSession)
         
         
         
@@ -51,25 +55,45 @@ class ViewController: UIViewController {
         
         view.layer.addSublayer(previewLayer)
         previewLayer.frame = view.frame
-
+        
         view.layer.addSublayer(pointsLayer)
         pointsLayer.frame = view.frame
         pointsLayer.strokeColor = UIColor.green.cgColor
+    }
+    
+    private func addParsley() {
+        let direction = fetchForceDirection(at: sceneView.center)
+        
+        let parsley = SCNNode(geometry: SCNBox(width: 0.001, height: 0.0001, length: 0.003, chamferRadius: 0.05))
+        parsley.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        parsley.position = SCNVector3(x: sceneView.session.currentFrame?.camera.transform.columns.3.x ?? 0 + direction!.x * 5 + 100,
+                                      y: sceneView.session.currentFrame?.camera.transform.columns.3.y ?? 0 + direction!.y * 5 + 10,
+                                      z: sceneView.session.currentFrame?.camera.transform.columns.3.z ?? 0 + direction!.z * 5 + 10)
+        
+        let physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: parsley.geometry!))
+        physicsBody.isAffectedByGravity = true
+        
+        parsley.physicsBody = physicsBody
+        
+//        parsley.physicsBody?.applyForce(SCNVector3(x: 0, y: -4, z: 0), asImpulse: false)
+        sceneView.scene.rootNode.addChildNode(parsley)
     }
 }
 
 extension ViewController: PredictorDelegate {
     func predictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double) {
         if action == "parsley" {
-            isParsleyDetected = true
-            DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
-                self.isParsleyDetected = false
-            })
-            
-            DispatchQueue.main.async {
-                AudioServicesPlayAlertSound(SystemSoundID(1300))
-                print("Parsley")
+            if isParsleyDetected == false {
+                isParsleyDetected = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+                    AudioServicesPlayAlertSound(SystemSoundID(1300))
+                    print("Parsley")
+                    self.addParsley()
+                    self.isParsleyDetected = false
+                })
             }
+        } else {
+//            print("none")
         }
     }
     
@@ -95,52 +119,17 @@ extension ViewController: PredictorDelegate {
 }
 
 extension ViewController: ARSCNViewDelegate {
-//    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-//        guard let device = sceneView.device else { return nil }
-//        let plane = ARSCNPlaneGeometry(device: device)
-//        let planeNode = SCNNode(geometry: plane)
-//
-//        planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.black
-//
-//        return planeNode
-//    }
-//
-//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        guard let planeAnchor = anchor as? ARPlaneAnchor,
-//              let planeGeometry = node.geometry as? ARSCNPlaneGeometry else { return }
-//        planeGeometry.firstMaterial?.diffuse.contents = UIColor.black
-//        planeGeometry.update(from: planeAnchor.geometry)
-//    }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else { return }
-        let sampleBuffer = getCMSampleBuffer(pixelBuffer)
         
-        
-        predictor.estimation(sampleBuffer: sampleBuffer)
+        predictor.estimation(pixelBuffer: pixelBuffer)
     }
 }
 
-fileprivate func getCMSampleBuffer(_ inputPixelBuffer: CVPixelBuffer) -> CMSampleBuffer {
-    var pixelBuffer: CVPixelBuffer = inputPixelBuffer
-
-    var info = CMSampleTimingInfo()
-    info.presentationTimeStamp = CMTime.zero
-    info.duration = CMTime.invalid
-    info.decodeTimeStamp = CMTime.invalid
-
-    var formatDesc: CMFormatDescription?
-    CMVideoFormatDescriptionCreateForImageBuffer(allocator: kCFAllocatorDefault,
-                                                 imageBuffer: pixelBuffer,
-                                                 formatDescriptionOut: &formatDesc)
-
-    var sampleBuffer: CMSampleBuffer?
-
-    CMSampleBufferCreateReadyWithImageBuffer(allocator: kCFAllocatorDefault,
-                                             imageBuffer: pixelBuffer,
-                                             formatDescription: formatDesc!,
-                                             sampleTiming: &info,
-                                             sampleBufferOut: &sampleBuffer)
-
-    return sampleBuffer!
+extension ViewController {
+    func fetchForceDirection(at position: CGPoint) -> simd_float3? {
+        guard let hitTestResult = sceneView.raycastQuery(from: position, allowing: .existingPlaneGeometry, alignment: .any) else { return nil }
+        return hitTestResult.direction
+    }
 }

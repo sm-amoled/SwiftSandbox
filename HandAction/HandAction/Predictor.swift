@@ -38,6 +38,19 @@ class Predictor {
         }
     }
     
+    func estimation(pixelBuffer: CVPixelBuffer) {
+        let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer,
+                                                   orientation: .up)
+        
+        let request = VNDetectHumanHandPoseRequest(completionHandler: handPoseHandler)
+        
+        do {
+            try requestHandler.perform([request])
+        } catch {
+            print("Unable to perform the request with error : \(error)")
+        }
+    }
+    
     func handPoseHandler(request: VNRequest, error: Error?) {
         guard let observation = request.results as? [VNHumanHandPoseObservation] else { return }
         
