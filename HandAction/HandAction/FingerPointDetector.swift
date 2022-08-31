@@ -1,43 +1,24 @@
 //
-//  Predictor.swift
+//  FingerPointDetector.swift
 //  HandAction
 //
-//  Created by Park Sungmin on 2022/08/30.
+//  Created by Park Sungmin on 2022/08/31.
 //
 
 import Foundation
 import Vision
 
-protocol PredictorDelegate: AnyObject {
-    func predictor(_ predictor: Predictor, didFindNewRecognizedPoints points: [CGPoint])
-    func predictor(_ predictor: Predictor, didLabelAction action: String, with confidence: Double)
-}
-
-
-class Predictor {
+class FingerPointDetector {
     
     weak var delegate: PredictorDelegate?
     
     let predictionWindowSize = 60
     var posesWindow: [VNHumanHandPoseObservation] = []
-    var indexFingerTipPosition: CGPoint?
     
     init() {
         posesWindow.reserveCapacity(predictionWindowSize)
     }
     
-    func estimation(sampleBuffer: CMSampleBuffer) {
-        let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer,
-                                                   orientation: .up)
-        
-        let request = VNDetectHumanHandPoseRequest(completionHandler: handPoseHandler)
-        
-        do {
-            try requestHandler.perform([request])
-        } catch {
-            print("Unable to perform the request with error : \(error)")
-        }
-    }
     
     func estimation(pixelBuffer: CVPixelBuffer) {
         let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer,
@@ -62,19 +43,18 @@ class Predictor {
         if let result = observation.first {
             storeObservation(result)
             
+//            labelActionType()
             do {
                 let indexFinger: [VNHumanHandPoseObservation.JointName: VNRecognizedPoint]? = try observation.first?.recognizedPoints(.indexFinger)
                 let indexFingerTipPoint = indexFinger?[.indexTip]
                 
-                indexFingerTipPosition = CGPoint(x: indexFingerTipPoint?.x ?? 0, y: indexFingerTipPoint?.y ?? 0)
                 print("x: \(indexFingerTipPoint?.x) / y: \(indexFingerTipPoint?.y)")
             } catch {
                 print("검지손가락을 찾을 수 없음")
             }
-            
-            labelActionType()
         }
     }
+    
     
     func labelActionType() {
         guard let parsleyClassifier = try? ParsleyModel(configuration: MLModelConfiguration()),
@@ -86,7 +66,7 @@ class Predictor {
         let label = predictions.label
         let confidence = predictions.labelProbabilities[label] ?? 0
         
-        delegate?.predictor(self, didLabelAction: label, with: confidence)
+//        delegate?.predictor(self, didLabelAction: label, with: confidence)
     }
     
     func prepareInputWithObservations(_ observations: [VNHumanHandPoseObservation]) -> MLMultiArray? {
@@ -140,9 +120,10 @@ class Predictor {
                 CGPoint(x: $0.value.x, y: 1 - $0.value.y)
             }
             
-            delegate?.predictor(self, didFindNewRecognizedPoints: displayedPoints)
+//            delegate?.predictor(self, didFindNewRecognizedPoints: displayedPoints)
         } catch {
             
         }
     }
+
 }

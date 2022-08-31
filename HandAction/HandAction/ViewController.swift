@@ -22,43 +22,27 @@ class ViewController: UIViewController {
     //    var videoCapture = VideoCapture()
     
     let predictor = Predictor()
+    let fingerPointDetector = FingerPointDetector()
     var pointsLayer = CAShapeLayer()
     var isParsleyDetected = false
     
     
     override func viewDidLoad() {
-        setupVideoPreview()
-        //        videoCapture.predictor.delegate = self
-//        arConfiguration.planeDetection = .horizontal
+        startSession()
+        
+        
+    }
+    
+    private func startSession() {
+        arConfiguration.planeDetection = [.horizontal]
+        arConfiguration.environmentTexturing = .automatic
         
         sceneView.scene.physicsWorld.gravity = SCNVector3(x: 0, y: -1, z: 0)
         sceneView.session.run(arConfiguration)
+        
         sceneView.delegate = self
-        
         predictor.delegate = self
-        
-//        let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
-//        sun.position = SCNVector3(0, 0, -1)
-//        sun.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "sun-diffuse")
-//        sceneView.scene.rootNode.addChildNode(sun)
-    }
-    
-    private func setupVideoPreview() {
-        //        videoCapture.startCaptureSession()
-        //        previewLayer = AVCaptureVideoPreviewLayer(session: videoCapture.captureSession)
-        
-        
-        
-        guard let previewLayer = previewLayer else {
-            return
-        }
-        
-        view.layer.addSublayer(previewLayer)
-        previewLayer.frame = view.frame
-        
-        view.layer.addSublayer(pointsLayer)
-        pointsLayer.frame = view.frame
-        pointsLayer.strokeColor = UIColor.green.cgColor
+        fingerPointDetector.delegate = self
     }
     
     private func addParsley() {
@@ -122,6 +106,8 @@ extension ViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         guard let pixelBuffer = sceneView.session.currentFrame?.capturedImage else { return }
+        
+        
         
         predictor.estimation(pixelBuffer: pixelBuffer)
     }

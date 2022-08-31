@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3471B45328BF0A1800CC9104 /* FingerPointDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471B45228BF0A1800CC9104 /* FingerPointDetector.swift */; };
 		34C5C2DF28BDA79D00E8A0DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5C2DE28BDA79D00E8A0DB /* AppDelegate.swift */; };
 		34C5C2E128BDA79D00E8A0DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5C2E028BDA79D00E8A0DB /* SceneDelegate.swift */; };
 		34C5C2E328BDA79D00E8A0DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5C2E228BDA79D00E8A0DB /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3471B45228BF0A1800CC9104 /* FingerPointDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerPointDetector.swift; sourceTree = "<group>"; };
 		34C5C2DB28BDA79D00E8A0DB /* HandAction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandAction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C5C2DE28BDA79D00E8A0DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34C5C2E028BDA79D00E8A0DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				34C5C2DE28BDA79D00E8A0DB /* AppDelegate.swift */,
 				34C5C2E028BDA79D00E8A0DB /* SceneDelegate.swift */,
 				34C5C2E228BDA79D00E8A0DB /* ViewController.swift */,
+				3471B45228BF0A1800CC9104 /* FingerPointDetector.swift */,
 				34C5C2F828BDBFBC00E8A0DB /* VideoCapture.swift */,
 				34C5C2FA28BDCF7D00E8A0DB /* Predictor.swift */,
 				34C5C2F628BDB07900E8A0DB /* ParsleyModel.mlpackage */,
@@ -153,6 +156,7 @@
 				34C5C2F528BDADD300E8A0DB /* Resnet50.mlmodel in Sources */,
 				34C5C2E328BDA79D00E8A0DB /* ViewController.swift in Sources */,
 				34C5C2F728BDB07900E8A0DB /* ParsleyModel.mlpackage in Sources */,
+				3471B45328BF0A1800CC9104 /* FingerPointDetector.swift in Sources */,
 				34C5C2DF28BDA79D00E8A0DB /* AppDelegate.swift in Sources */,
 				34C5C2FB28BDCF7E00E8A0DB /* Predictor.swift in Sources */,
 				34C5C2F928BDBFBC00E8A0DB /* VideoCapture.swift in Sources */,
