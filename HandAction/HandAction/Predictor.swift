@@ -67,7 +67,7 @@ class Predictor {
                 let indexFingerTipPoint = indexFinger?[.indexTip]
                 
                 indexFingerTipPosition = CGPoint(x: indexFingerTipPoint?.x ?? 0, y: indexFingerTipPoint?.y ?? 0)
-                print("x: \(indexFingerTipPoint?.x) / y: \(indexFingerTipPoint?.y)")
+//                print("x: \(indexFingerTipPoint?.x) / y: \(indexFingerTipPoint?.y)")
             } catch {
                 print("검지손가락을 찾을 수 없음")
             }

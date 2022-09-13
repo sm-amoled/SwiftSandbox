@@ -48,7 +48,7 @@ class FingerPointDetector {
                 let indexFinger: [VNHumanHandPoseObservation.JointName: VNRecognizedPoint]? = try observation.first?.recognizedPoints(.indexFinger)
                 let indexFingerTipPoint = indexFinger?[.indexTip]
                 
-                print("x: \(indexFingerTipPoint?.x) / y: \(indexFingerTipPoint?.y)")
+//                print("x: \(indexFingerTipPoint?.x) / y: \(indexFingerTipPoint?.y)")
             } catch {
                 print("검지손가락을 찾을 수 없음")
             }
