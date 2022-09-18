@@ -19,6 +19,7 @@
 		343C38F028CF657F003F3F9D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C38EF28CF657F003F3F9D /* ComplicationController.swift */; };
 		343C38F228CF6580003F3F9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C38F128CF6580003F3F9D /* Assets.xcassets */; };
 		343C38F528CF6580003F3F9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C38F428CF6580003F3F9D /* Preview Assets.xcassets */; };
+		343C390528D04211003F3F9D /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C390428D04211003F3F9D /* SecondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		343C38F128CF6580003F3F9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		343C38F428CF6580003F3F9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		343C38F628CF6580003F3F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		343C390428D04211003F3F9D /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				343C38EB28CF657F003F3F9D /* ContentView.swift */,
+				343C390428D04211003F3F9D /* SecondView.swift */,
 				343C38ED28CF657F003F3F9D /* WatchTimerApp.swift */,
 				343C38EF28CF657F003F3F9D /* ComplicationController.swift */,
 				343C38F128CF6580003F3F9D /* Assets.xcassets */,
@@ -308,6 +311,7 @@
 			files = (
 				343C38EC28CF657F003F3F9D /* ContentView.swift in Sources */,
 				343C38EE28CF657F003F3F9D /* WatchTimerApp.swift in Sources */,
+				343C390528D04211003F3F9D /* SecondView.swift in Sources */,
 				343C38F028CF657F003F3F9D /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
