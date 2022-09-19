@@ -83,7 +83,7 @@ struct ContentView: View {
                     }
                     
                     Button {
-                        nextTimer()
+                        nextTimer()   
                     } label: {
                         switch timerState {
                         case .stop:
