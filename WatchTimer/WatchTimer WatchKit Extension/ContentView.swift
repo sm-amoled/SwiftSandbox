@@ -3,7 +3,7 @@
 //  WatchTimer WatchKit Extension
 //
 //  Created by Park Sungmin on 2022/09/12.
-//
+//  https://velog.io/@tony1803/iOS-뽀모도로-타이머-앱-만들기
 
 import SwiftUI
 
@@ -12,11 +12,11 @@ struct ContentView: View {
     @State var timerVal = 1
     
     @State var entireTime = WorkoutTime()
-    @State var restTime = WorkoutTime(time: 30)
+    @State var restTime = WorkoutTime(time: 5)
     
-    @State var isRunning = false
-    @State var isCleared = true
+    @State var timerState: TimerState = .idle
     
+    @State var timer: DispatchSourceTimer? = nil
     
     var body: some View {
         VStack {
@@ -31,6 +31,7 @@ struct ContentView: View {
             VStack {
                 Text("쉬는시간")
                     .font(.system(size: 20))
+                
                 Text(restTime.timeToString())
                     .font(.system(size: 32))
                 
@@ -38,71 +39,94 @@ struct ContentView: View {
                     Button {
                         
                         // 초기 상태
-                        if isCleared {
-                            isCleared = false
-                            isRunning = true
+                        switch timerState {
+                        case .idle:
+                            timerState = .isRunning
+                            startTimer()
                             
-                            Timer.scheduledTimer(withTimeInterval: 1, repeats: restTime.time > 0 && isRunning) { timer in
-                                restTime.time -= 1
-                                
-                                if restTime.time == 0 {
-                                    isRunning = false
-                                }
-                            }
+                            // 타이머 재생 중
+                        case .isRunning:
+                            timerState = .pause
+                            pauseTimer()
+                            
+                            // 타이머 일시정지
+                        case .pause:
+                            timerState = .isRunning
+                            resumeTimer()
+                            
+                            // 타이머 시간이 전부 지나감
+                        case .stop:
+                            restTime.time += 30
+                            timerState = .isRunning
+                            startTimer()
                         }
-                        // 타이머가 실행된 이후
-                        else {
-                            // 일시중지
-                            if restTime.time > 0 && isRunning {
-                                isRunning = false
-                            }
-                            // 다시 재생
-                            else if restTime.time > 0 && !isRunning {
-                                isRunning = true
-                            }
-                            // 시간이 모두 지난 이후
-                            else if restTime.time == 0 {
-                                restTime.time += 30
-                                isRunning = true
-                            }
-                        }
+                        
                         
                     } label: {
                         // 초기 상태
-                        if isCleared {
+                        switch timerState {
+                        case .idle:
                             Text("시작")
-                        }
-                        // 타이머가 실행된 이후
-                        else {
-                            // 일시중지
-                            if restTime.time > 0 && isRunning {
-                                Text("일시정지")
-                            }
-                            // 다시 재생
-                            else if restTime.time > 0 && !isRunning {
-                                Text("재생")
-                            }
-                            // 시간이 모두 지난 이후
-                            else if restTime.time == 0 {
-                                Text("+30초")
-                            }
+                            
+                            // 타이머 재생 중
+                        case .isRunning:
+                            Text("일시정지")
+                            
+                            // 타이머 일시정지
+                        case .pause:
+                            Text("계속")
+                            
+                            // 타이머 시간이 전부 지나감
+                        case .stop:
+                            Text("30초 추가")
                         }
                     }
                     
                     Button {
-                        
+                        nextTimer()
                     } label: {
-                        Text("건너뛰기")
+                        switch timerState {
+                        case .stop:
+                            Text("넘어가기")
+                            
+                        default:
+                            Text("건너뛰기")
+                        }
+                        
                     }
                 }
             }
-            
-            
-            //            NavigationLink(destination: SecondView(secondScreenShown: $secondScreenShown,
-            //                                                   timerVal: timerVal),
-            //                           isActive: $secondScreenShown,
-            //                           label: {Text("Go")})
         }
+    }
+    
+    func startTimer() {
+        if self.timer == nil {
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 1)
+            self.timer?.setEventHandler(handler: {
+                restTime.time -= 1
+                
+                if restTime.time == 0 {
+                    timerState = .stop
+                    
+                    timer?.cancel()
+                    self.timer = nil
+                }
+            })
+            self.timer?.resume()
+        }
+    }
+    
+    func pauseTimer() {
+        timer?.suspend()
+    }
+    
+    func resumeTimer() {
+        timer?.resume()
+    }
+    
+    func nextTimer() {
+        
     }
 }
 
