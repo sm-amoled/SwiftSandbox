@@ -3,7 +3,7 @@
 //  WatchTimer WatchKit Extension
 //
 //  Created by Park Sungmin on 2022/09/12.
-//  https://velog.io/@tony1803/iOS-뽀모도로-타이머-앱-만들기
+//  참고자료 : https://velog.io/@tony1803/iOS-뽀모도로-타이머-앱-만들기
 
 import SwiftUI
 
@@ -83,7 +83,7 @@ struct ContentView: View {
                     }
                     
                     Button {
-                        nextTimer()   
+                        nextTimer()
                     } label: {
                         switch timerState {
                         case .stop:
@@ -126,7 +126,11 @@ struct ContentView: View {
     }
     
     func nextTimer() {
+        timer?.cancel()
+        self.timer = nil
         
+        restTime.time = 30
+        timerState = .idle
     }
 }
 
@@ -134,16 +138,4 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
-}
-
-struct WorkoutTime {
-    var time: Int = 0
-    
-    func timeToString() -> String {
-        let minute = time / 60
-        let second = time % 60
-        
-        return String(format: "%02d:%02d", minute, second)
-    }
-    
 }

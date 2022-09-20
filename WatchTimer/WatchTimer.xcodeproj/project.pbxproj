@@ -20,6 +20,12 @@
 		343C38F228CF6580003F3F9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C38F128CF6580003F3F9D /* Assets.xcassets */; };
 		343C38F528CF6580003F3F9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C38F428CF6580003F3F9D /* Preview Assets.xcassets */; };
 		343C390528D04211003F3F9D /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C390428D04211003F3F9D /* SecondView.swift */; };
+		349289F228D885A4008D9EA0 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F128D885A4008D9EA0 /* TimerViewModel.swift */; };
+		349289F428D885AD008D9EA0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F328D885AD008D9EA0 /* TimerView.swift */; };
+		349289F828D8894C008D9EA0 /* TotalTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F728D8894C008D9EA0 /* TotalTimerView.swift */; };
+		349289FA28D96F74008D9EA0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F928D96F74008D9EA0 /* MainView.swift */; };
+		349289FC28D97B56008D9EA0 /* TotalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289FB28D97B56008D9EA0 /* TotalTimer.swift */; };
+		349289FE28D987DE008D9EA0 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289FD28D987DE008D9EA0 /* TimeModel.swift */; };
 		349DEDA928D6FA3C0083333A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DEDA828D6FA3C0083333A /* Enums.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +87,12 @@
 		343C38F428CF6580003F3F9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		343C38F628CF6580003F3F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		343C390428D04211003F3F9D /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		349289F128D885A4008D9EA0 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		349289F328D885AD008D9EA0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		349289F728D8894C008D9EA0 /* TotalTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTimerView.swift; sourceTree = "<group>"; };
+		349289F928D96F74008D9EA0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		349289FB28D97B56008D9EA0 /* TotalTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTimer.swift; sourceTree = "<group>"; };
+		349289FD28D987DE008D9EA0 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		349DEDA828D6FA3C0083333A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,13 +165,19 @@
 			isa = PBXGroup;
 			children = (
 				343C38EB28CF657F003F3F9D /* ContentView.swift */,
+				349289F328D885AD008D9EA0 /* TimerView.swift */,
+				349289F128D885A4008D9EA0 /* TimerViewModel.swift */,
 				343C390428D04211003F3F9D /* SecondView.swift */,
+				349289FB28D97B56008D9EA0 /* TotalTimer.swift */,
 				343C38ED28CF657F003F3F9D /* WatchTimerApp.swift */,
 				343C38EF28CF657F003F3F9D /* ComplicationController.swift */,
+				349289FD28D987DE008D9EA0 /* TimeModel.swift */,
 				343C38F128CF6580003F3F9D /* Assets.xcassets */,
 				343C38F628CF6580003F3F9D /* Info.plist */,
 				343C38F328CF6580003F3F9D /* Preview Content */,
 				349DEDA828D6FA3C0083333A /* Enums.swift */,
+				349289F928D96F74008D9EA0 /* MainView.swift */,
+				349289F728D8894C008D9EA0 /* TotalTimerView.swift */,
 			);
 			path = "WatchTimer WatchKit Extension";
 			sourceTree = "<group>";
@@ -312,11 +330,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349289F428D885AD008D9EA0 /* TimerView.swift in Sources */,
+				349289FA28D96F74008D9EA0 /* MainView.swift in Sources */,
+				349289FC28D97B56008D9EA0 /* TotalTimer.swift in Sources */,
 				343C38EC28CF657F003F3F9D /* ContentView.swift in Sources */,
 				343C38EE28CF657F003F3F9D /* WatchTimerApp.swift in Sources */,
 				343C390528D04211003F3F9D /* SecondView.swift in Sources */,
 				349DEDA928D6FA3C0083333A /* Enums.swift in Sources */,
+				349289F228D885A4008D9EA0 /* TimerViewModel.swift in Sources */,
 				343C38F028CF657F003F3F9D /* ComplicationController.swift in Sources */,
+				349289F828D8894C008D9EA0 /* TotalTimerView.swift in Sources */,
+				349289FE28D987DE008D9EA0 /* TimeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

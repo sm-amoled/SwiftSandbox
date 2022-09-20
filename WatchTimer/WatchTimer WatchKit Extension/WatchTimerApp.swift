@@ -12,7 +12,9 @@ struct WatchTimerApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+//                ContentView()
+//                TimerView()
+                MainView()
             }
         }
     }
