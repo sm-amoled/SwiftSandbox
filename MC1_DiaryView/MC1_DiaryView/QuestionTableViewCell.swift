@@ -11,17 +11,22 @@ class QuestionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var questionButton: UIButton!
     
-//    var indexNo: Int
+    var delegate: SelectQuestionDelegate?
+    var rowNo: Int?
     
     
     @IBAction func tapQuestionButton(_ sender: Any) {
+        if let rowNo = rowNo {
+            delegate?.tapQuestionCell(rowNo: rowNo)
+        }
+        
         isSelected = isSelected ? false : true
         setStyle()
     }
     
     func setStyle() {
         if isSelected {
-            questionButton.backgroundColor = .gray
+            questionButton.backgroundColor = .systemBlue
         } else {
             questionButton.backgroundColor = .white
         }

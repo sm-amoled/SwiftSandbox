@@ -10,7 +10,7 @@ import SwiftUI
 
 class TotalTimer: ObservableObject {
     
-    @Published var timerVal = 1
+//    @Published var timerVal = 1
     @Published var entireTime = WorkoutTime()
     @Published var timerState: TimerState = .idle
     

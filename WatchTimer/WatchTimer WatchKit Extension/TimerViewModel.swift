@@ -55,8 +55,11 @@ class TimerViewModel: ObservableObject {
     func nextTimer() {
         timerState = .idle
         
-        timer?.cancel()
-        self.timer = nil
+        DispatchQueue.main.async {
+            self.timer?.cancel()
+            self.timer?.resume()
+            self.timer = nil
+        }
         
         restTime.time = 5
     }

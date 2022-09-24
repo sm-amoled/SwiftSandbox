@@ -72,6 +72,7 @@ struct TimerView: View {
                     
                     Button {
                         viewModel.nextTimer()
+                        
                     } label: {
                         switch viewModel.timerState {
                         case .stop:

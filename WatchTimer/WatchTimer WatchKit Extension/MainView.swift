@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State var timerIsShown = false
     @ObservedObject var totalTimer = TotalTimer()
+    let workoutManager = WorkoutManager()
     
     var body: some View {
         VStack {
@@ -25,6 +26,7 @@ struct MainView: View {
                     Button {
                         timerIsShown = true
                         totalTimer.startTimer()
+                        workoutManager.selectedWorkout = .functionalStrengthTraining
                     } label: {
                         Text("시작")
                     }
@@ -33,11 +35,14 @@ struct MainView: View {
                         switch totalTimer.timerState {
                         case .isRunning:
                             totalTimer.pauseTimer()
+                            workoutManager.pause()
                         case .pause:
                             totalTimer.resumeTimer()
+                            workoutManager.resume()
                         default:
                             totalTimer.stopTimer()
                             totalTimer.entireTime.time = 0
+                            workoutManager.endWorkout()
                         }
                     } label: {
                         switch totalTimer.timerState {
@@ -57,6 +62,10 @@ struct MainView: View {
                     }
                 }
             }
+            .onAppear {
+                print("request")
+                workoutManager.requestAuthorization()
+            }
             
             NavigationLink(destination: TimerView()
                                             .environmentObject(totalTimer),
@@ -64,7 +73,6 @@ struct MainView: View {
                 Text("오늘의 운동")
             }
         }
-        
     }
 }
 

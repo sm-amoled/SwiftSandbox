@@ -11,17 +11,41 @@ class SelectQuestionViewController: UIViewController {
 
     @IBOutlet weak var questionTableView: UITableView!
     
+    var questionList: [QuestionModel] = []
+    var selectedQuestionList: [Bool] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        setQuestionList()
     }
 
 
     @IBAction func tapNextButton(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let writeDiaryVC = storyBoard.instantiateViewController(withIdentifier: "WriteDiaryView") as! WriteDiaryViewController
+        guard let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) as? UIStoryboard else { return }
+        guard let writeDiaryVC = storyBoard.instantiateViewController(withIdentifier: "WriteDiaryView") as? WriteDiaryViewController else { return }
+        
+        writeDiaryVC.questionList = getSelectedQuestionList()
         
         self.navigationController?.pushViewController(writeDiaryVC, animated: true)
         
+    }
+    
+    func setQuestionList() {
+        questionList = QuestionModel.dummyQuestion
+        selectedQuestionList = Array(repeating: false, count: questionList.count)
+    }
+    
+    func getSelectedQuestionList() -> [QuestionModel] {
+        var result: [QuestionModel] = []
+        
+        for (index, isSelected) in selectedQuestionList.enumerated() {
+            if isSelected {
+                result.append(questionList[index])
+            }
+        }
+        
+        return result
     }
 }
