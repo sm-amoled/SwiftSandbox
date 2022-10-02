@@ -12,5 +12,15 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array/>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>workout-processing</string>
+	</array>
+	<key>NSHealthShareUsageDescription</key>
+	<string>건강 정보를 추가하기 위해 권한이 필요합니다.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>건강 정보를 읽어오기 위해 권한이 필요합니다.</string>
 </dict>
 </plist>

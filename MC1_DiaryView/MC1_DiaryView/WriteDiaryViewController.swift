@@ -16,8 +16,23 @@ class WriteDiaryViewController: ViewController {
     @IBOutlet weak var questionListHeight: NSLayoutConstraint!
     @IBOutlet weak var textFieldViewHeight: NSLayoutConstraint!
     @IBOutlet weak var questionLabelTableView: UITableView!
+    @IBOutlet weak var textFieldViewBottomPadding: NSLayoutConstraint!
     
-    var isQuestionListShown = true
+    var scrollViewFrameDefaultSize: CGRect?
+    var textFieldViewDefaultHeight: CGFloat?
+    
+    var _isQuestionListShown: Bool = false
+    
+    var isQuestionListShown: Bool {
+        get {
+            return _isQuestionListShown
+        }
+        set(value) {
+            _isQuestionListShown = value
+            
+            setViewLayout()
+        }
+    }
     
     let cellHeight: Int = 35
     
@@ -36,45 +51,70 @@ class WriteDiaryViewController: ViewController {
         questionListHeight.constant = CGFloat(50 + (isQuestionListShown ? questionList.count * cellHeight : 0))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollViewFrameDefaultSize = self.scrollView.frame
+        textFieldViewDefaultHeight = textFieldViewHeight.constant
+        
+        setViewLayout()
+    }
+    
 
     @IBAction func tapQuestionListButton(_ sender: UIButton) {
+        self.view.endEditing(true)
         isQuestionListShown.toggle()
-        questionListHeight.constant = CGFloat(50 + (isQuestionListShown ? questionList.count * cellHeight : 0))
     }
     
     @IBAction func tapNextButton(_ sender: Any) {
         self.view.endEditing(true)
+        setViewLayout()
     }
     
+    
+    func setViewLayout() {
+        if !isKeyboardExpand {
+            questionListHeight.constant = CGFloat(50 + (isQuestionListShown ? questionList.count * cellHeight : 0))
+            textFieldViewHeight.constant = CGFloat(textFieldViewDefaultHeight!)
+            textFieldViewBottomPadding.constant = 45
+            self.scrollView.frame = scrollViewFrameDefaultSize!
+        } else {
+            textFieldViewBottomPadding.constant = 5
+        }
+        
+    }
+    
+    // MARK: Keyboard
     var isKeyboardExpand: Bool = false
     
     @objc func keyboardAppear(_ notification: Notification) {
         if !isKeyboardExpand {
-            
+            isKeyboardExpand = true
+
             if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let keyboardRectangle = keyboardFrame.cgRectValue
                 let keyboardHeight = keyboardRectangle.height
                 
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollView.frame.height + 100)
-                
                 isQuestionListShown = false
                 questionListHeight.constant = 50
                 
-                textFieldViewHeight.constant = UIScreen.main.bounds.height - keyboardHeight - 100
+                textFieldViewHeight.constant = UIScreen.main.bounds.height - keyboardHeight - 120
+
+                self.scrollView.frame = CGRect(origin: CGPoint(x: 0, y: 0),
+                                               size: CGSize(width: self.scrollView.frame.width,
+                                                            height: UIScreen.main.bounds.height - keyboardHeight))
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollView.frame.height + 100)
+
+                setViewLayout()
             }
             
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height), animated: true)
-            
-            isKeyboardExpand = true
         }
     }
     
     @objc func keyboardDisappear() {
         if isKeyboardExpand {
-            self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollView.frame.height - 100)
             isKeyboardExpand = false
-            
-            textFieldViewHeight.constant = self.view.frame.height - CGFloat((185 + 35*questionList.count))
         }
     }
 }

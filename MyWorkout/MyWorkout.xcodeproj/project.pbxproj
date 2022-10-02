@@ -17,6 +17,7 @@
 		3447289028E1CB0C006ABB67 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447288F28E1CB0C006ABB67 /* ComplicationController.swift */; };
 		3447289228E1CB0D006ABB67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3447289128E1CB0D006ABB67 /* Assets.xcassets */; };
 		3447289528E1CB0D006ABB67 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3447289428E1CB0D006ABB67 /* Preview Assets.xcassets */; };
+		3492C25A28E3EC6500FA7B28 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3492C25928E3EC6500FA7B28 /* WorkoutManager.swift */; };
 		34E44C0128E1D3FC0078AD9B /* SessionPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C0028E1D3FC0078AD9B /* SessionPagingView.swift */; };
 		34E44C0328E1D4D40078AD9B /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C0228E1D4D40078AD9B /* MetricsView.swift */; };
 		34E44C0528E1D8550078AD9B /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E44C0428E1D8550078AD9B /* ElapsedTimeView.swift */; };
@@ -81,6 +82,8 @@
 		3447289428E1CB0D006ABB67 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3447289628E1CB0D006ABB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3447289728E1CB0D006ABB67 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		3492C25928E3EC6500FA7B28 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		3492C25B28E3F2C800FA7B28 /* MyWorkout WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MyWorkout WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		34E44C0028E1D3FC0078AD9B /* SessionPagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPagingView.swift; sourceTree = "<group>"; };
 		34E44C0228E1D4D40078AD9B /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		34E44C0428E1D8550078AD9B /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
@@ -130,10 +133,12 @@
 		3447288628E1CB0C006ABB67 /* MyWorkout WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3492C25B28E3F2C800FA7B28 /* MyWorkout WatchKit Extension.entitlements */,
 				3447288728E1CB0C006ABB67 /* MyWorkoutApp.swift */,
 				3447288928E1CB0C006ABB67 /* StartView.swift */,
 				34E44C0028E1D3FC0078AD9B /* SessionPagingView.swift */,
 				34E44C0A28E1E9F10078AD9B /* SummaryView.swift */,
+				3492C25928E3EC6500FA7B28 /* WorkoutManager.swift */,
 				34E44C0C28E1EE0E0078AD9B /* ActivityRingsView.swift */,
 				34E44C0228E1D4D40078AD9B /* MetricsView.swift */,
 				34E44C0628E1E8C80078AD9B /* ControlsView.swift */,
@@ -289,6 +294,7 @@
 				3447288C28E1CB0C006ABB67 /* NotificationController.swift in Sources */,
 				34E44C0D28E1EE0E0078AD9B /* ActivityRingsView.swift in Sources */,
 				34E44C0328E1D4D40078AD9B /* MetricsView.swift in Sources */,
+				3492C25A28E3EC6500FA7B28 /* WorkoutManager.swift in Sources */,
 				3447288A28E1CB0C006ABB67 /* StartView.swift in Sources */,
 				3447289028E1CB0C006ABB67 /* ComplicationController.swift in Sources */,
 				3447288828E1CB0C006ABB67 /* MyWorkoutApp.swift in Sources */,
@@ -430,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "MyWorkout WatchKit Extension/MyWorkout WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyWorkout WatchKit Extension/Preview Content\"";
@@ -438,7 +445,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MyWorkout WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MyWorkout WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = MyWorkout_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -462,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "MyWorkout WatchKit Extension/MyWorkout WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyWorkout WatchKit Extension/Preview Content\"";
@@ -470,7 +478,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MyWorkout WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MyWorkout WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = MyWorkout_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
