@@ -326,6 +326,7 @@
                         <outlet property="scrollView" destination="A9f-Tb-7tg" id="REx-cw-xir"/>
                         <outlet property="textFieldViewBottomPadding" destination="QBq-oX-qFU" id="Gci-ga-sFP"/>
                         <outlet property="textFieldViewHeight" destination="olZ-l1-EM9" id="2b5-cA-Scn"/>
+                        <outlet property="titleTextField" destination="uXd-fv-6zZ" id="cNU-Xr-AW7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ps1-f3-4WE" sceneMemberID="firstResponder"/>

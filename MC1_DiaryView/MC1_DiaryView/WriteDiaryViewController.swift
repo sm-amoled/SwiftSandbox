@@ -18,6 +18,8 @@ class WriteDiaryViewController: ViewController {
     @IBOutlet weak var questionLabelTableView: UITableView!
     @IBOutlet weak var textFieldViewBottomPadding: NSLayoutConstraint!
     
+    @IBOutlet weak var titleTextField: UITextField!
+    
     var scrollViewFrameDefaultSize: CGRect?
     var textFieldViewDefaultHeight: CGFloat?
     
@@ -39,6 +41,7 @@ class WriteDiaryViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -117,5 +120,15 @@ class WriteDiaryViewController: ViewController {
             isKeyboardExpand = false
         }
     }
+    
+    
 }
-
+//
+//extension WriteDiaryViewController : UITextFieldDelegate {
+//
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.scrollView.frame = CGRect(origin: CGPoint(x: 0, y: 0),
+//                                       size: CGSize(width: self.scrollView.frame.width,
+//                                                    height: 300))
+//    }
+//}
