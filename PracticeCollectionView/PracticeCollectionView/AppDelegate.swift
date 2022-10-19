@@ -1,16 +1,16 @@
 //
 //  AppDelegate.swift
-//  PracticeSnapKit
+//  PracticeCollectionView
 //
-//  Created by Park Sungmin on 2022/10/15.
+//  Created by Park Sungmin on 2022/10/19.
 //
 
 import UIKit
 
- @main
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
