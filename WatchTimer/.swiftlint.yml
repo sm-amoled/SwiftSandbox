@@ -1,0 +1,14 @@
+disabled_rules:  // 아래 룰은 검사 대상에서 제외하겠다는 뜻
+- trailing_whitespace
+- xctfail_message
+- function_parameter_count
+- legacy_constructor
+- force_cast
+- trailing_comma
+- force_try
+- identifier_name
+
+type_body_length: 250  // 타입/함수/파일 등의 코드길이 제한을 변경하겠다는 뜻
+line_length: 120
+function_body_length: 50
+file_length: 500

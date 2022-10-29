@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     let toolbarView: UIToolbar = {
         let view = UIToolbar()
         view.backgroundColor = .systemGray5
-
+        
         var items: [UIBarButtonItem] = []
         
         let myPageButton = UIBarButtonItem(image: UIImage(systemName: "person.crop.rectangle"), style: .plain, target: self, action: nil)
@@ -36,14 +36,20 @@ class ViewController: UIViewController {
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
+        addVideoButton.showsMenuAsPrimaryAction = true
+        addVideoButton.menu = UIMenu(options: .displayInline, children: [])
+        addVideoButton.addAction(UIAction { [weak infoButton] (action) in
+            addVideoButton?.menu = infoButton?.menu?.replacingChildren([])
+        }, for: .menuActionTriggered)
+        
         items.append(myPageButton)
         items.append(flexibleSpace)
         items.append(addVideoButton)
-
+        
         items.forEach { (item) in
             item.tintColor = .systemBlue
         }
-
+        
         view.setItems(items, animated: true)
         
         return view
@@ -191,7 +197,7 @@ class CollectionViewCardCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitle("더 보기", for: .normal)
         button.setTitleColor(.black, for: .normal)
-//        button.backgroundColor = .gray
+        //        button.backgroundColor = .gray
         return button
     }()
     
@@ -306,3 +312,35 @@ class ThumbnailCollectionViewCell: UICollectionViewCell {
         }
     }
 }
+
+extension ViewController: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil,
+            actionProvider: { _ in
+                let children: [UIMenuElement] = []
+                return UIMenu(title: "", children: children)
+            })
+    }
+    
+    func makeRemoveRatingAction() -> UIAction {
+      // 1
+      var removeRatingAttributes = UIMenuElement.Attributes.destructive
+      
+      // 2
+      // 3
+      let deleteImage = UIImage(systemName: "delete.left")
+      
+      // 4
+      return UIAction(
+        title: "Remove rating",
+        image: deleteImage,
+        identifier: nil,
+        attributes: removeRatingAttributes) { _ in
+          print("hello")
+        }
+    }
+
+}
+

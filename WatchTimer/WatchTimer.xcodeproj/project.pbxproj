@@ -20,6 +20,8 @@
 		343C38F228CF6580003F3F9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C38F128CF6580003F3F9D /* Assets.xcassets */; };
 		343C38F528CF6580003F3F9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C38F428CF6580003F3F9D /* Preview Assets.xcassets */; };
 		343C390528D04211003F3F9D /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C390428D04211003F3F9D /* SecondView.swift */; };
+		344D59AD290D642B00D7208D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 344D59AC290D642B00D7208D /* .swiftlint.yml */; };
+		344D59AE290D642B00D7208D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 344D59AC290D642B00D7208D /* .swiftlint.yml */; };
 		349289F228D885A4008D9EA0 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F128D885A4008D9EA0 /* TimerViewModel.swift */; };
 		349289F428D885AD008D9EA0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F328D885AD008D9EA0 /* TimerView.swift */; };
 		349289F828D8894C008D9EA0 /* TotalTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349289F728D8894C008D9EA0 /* TotalTimerView.swift */; };
@@ -90,6 +92,7 @@
 		343C38F428CF6580003F3F9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		343C38F628CF6580003F3F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		343C390428D04211003F3F9D /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		344D59AC290D642B00D7208D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		349289F128D885A4008D9EA0 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		349289F328D885AD008D9EA0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		349289F728D8894C008D9EA0 /* TotalTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTimerView.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		343C38C428CF657B003F3F9D = {
 			isa = PBXGroup;
 			children = (
+				344D59AC290D642B00D7208D /* .swiftlint.yml */,
 				343C38CF28CF657B003F3F9D /* WatchTimer */,
 				343C38DF28CF657E003F3F9D /* WatchTimer WatchKit App */,
 				343C38EA28CF657F003F3F9D /* WatchTimer WatchKit Extension */,
@@ -261,6 +265,7 @@
 				343C38E228CF657F003F3F9D /* Sources */,
 				343C38E328CF657F003F3F9D /* Frameworks */,
 				343C38E428CF657F003F3F9D /* Resources */,
+				344D59AB290D63E400D7208D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -317,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344D59AD290D642B00D7208D /* .swiftlint.yml in Resources */,
 				343C38D828CF657E003F3F9D /* Preview Assets.xcassets in Resources */,
 				343C38D528CF657E003F3F9D /* Assets.xcassets in Resources */,
 			);
@@ -334,12 +340,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				344D59AE290D642B00D7208D /* .swiftlint.yml in Resources */,
 				343C38F528CF6580003F3F9D /* Preview Assets.xcassets in Resources */,
 				343C38F228CF6580003F3F9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		344D59AB290D63E400D7208D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		343C38C928CF657B003F3F9D /* Sources */ = {

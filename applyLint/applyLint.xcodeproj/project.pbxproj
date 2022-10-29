@@ -7,121 +7,106 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		345054AA28FD8A0D00DC2377 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 345054A928FD8A0D00DC2377 /* RxSwift */; };
-		345E3D8828FD85E000EB0689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E3D8728FD85E000EB0689 /* AppDelegate.swift */; };
-		345E3D8A28FD85E000EB0689 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E3D8928FD85E000EB0689 /* SceneDelegate.swift */; };
-		345E3D8C28FD85E000EB0689 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345E3D8B28FD85E000EB0689 /* ViewController.swift */; };
-		345E3D8F28FD85E000EB0689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 345E3D8D28FD85E000EB0689 /* Main.storyboard */; };
-		345E3D9128FD85E100EB0689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 345E3D9028FD85E100EB0689 /* Assets.xcassets */; };
-		345E3D9428FD85E100EB0689 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 345E3D9228FD85E100EB0689 /* LaunchScreen.storyboard */; };
-		3462996528FD91C200DFA07E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3462996428FD91C200DFA07E /* RxCocoa */; };
-		3462996728FD939100DFA07E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3462996628FD939100DFA07E /* DetailViewController.swift */; };
+		34F715E7290D6517004BD5E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F715E6290D6517004BD5E0 /* AppDelegate.swift */; };
+		34F715E9290D6517004BD5E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F715E8290D6517004BD5E0 /* SceneDelegate.swift */; };
+		34F715EB290D6517004BD5E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F715EA290D6517004BD5E0 /* ViewController.swift */; };
+		34F715EE290D6517004BD5E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F715EC290D6517004BD5E0 /* Main.storyboard */; };
+		34F715F0290D6518004BD5E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34F715EF290D6518004BD5E0 /* Assets.xcassets */; };
+		34F715F3290D6518004BD5E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34F715F1290D6518004BD5E0 /* LaunchScreen.storyboard */; };
+		34F715FC290D655D004BD5E0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 34F715FB290D655D004BD5E0 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		345E3D8428FD85E000EB0689 /* PracticeRX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeRX.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		345E3D8728FD85E000EB0689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		345E3D8928FD85E000EB0689 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		345E3D8B28FD85E000EB0689 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		345E3D8E28FD85E000EB0689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		345E3D9028FD85E100EB0689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		345E3D9328FD85E100EB0689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		345E3D9528FD85E100EB0689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3462996628FD939100DFA07E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		34F715E3290D6517004BD5E0 /* applyLint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = applyLint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34F715E6290D6517004BD5E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		34F715E8290D6517004BD5E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		34F715EA290D6517004BD5E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		34F715ED290D6517004BD5E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		34F715EF290D6518004BD5E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34F715F2290D6518004BD5E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		34F715F4290D6518004BD5E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34F715FB290D655D004BD5E0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		345E3D8128FD85E000EB0689 /* Frameworks */ = {
+		34F715E0290D6517004BD5E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3462996528FD91C200DFA07E /* RxCocoa in Frameworks */,
-				345054AA28FD8A0D00DC2377 /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		345054A828FD8A0D00DC2377 /* Frameworks */ = {
+		34F715DA290D6517004BD5E0 = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		345E3D7B28FD85E000EB0689 = {
-			isa = PBXGroup;
-			children = (
-				345E3D8628FD85E000EB0689 /* PracticeRX */,
-				345E3D8528FD85E000EB0689 /* Products */,
-				345054A828FD8A0D00DC2377 /* Frameworks */,
+				34F715E5290D6517004BD5E0 /* applyLint */,
+				34F715E4290D6517004BD5E0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		345E3D8528FD85E000EB0689 /* Products */ = {
+		34F715E4290D6517004BD5E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				345E3D8428FD85E000EB0689 /* PracticeRX.app */,
+				34F715E3290D6517004BD5E0 /* applyLint.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		345E3D8628FD85E000EB0689 /* PracticeRX */ = {
+		34F715E5290D6517004BD5E0 /* applyLint */ = {
 			isa = PBXGroup;
 			children = (
-				345E3D8728FD85E000EB0689 /* AppDelegate.swift */,
-				345E3D8928FD85E000EB0689 /* SceneDelegate.swift */,
-				345E3D8B28FD85E000EB0689 /* ViewController.swift */,
-				345E3D8D28FD85E000EB0689 /* Main.storyboard */,
-				3462996628FD939100DFA07E /* DetailViewController.swift */,
-				345E3D9028FD85E100EB0689 /* Assets.xcassets */,
-				345E3D9228FD85E100EB0689 /* LaunchScreen.storyboard */,
-				345E3D9528FD85E100EB0689 /* Info.plist */,
+				34F715E6290D6517004BD5E0 /* AppDelegate.swift */,
+				34F715E8290D6517004BD5E0 /* SceneDelegate.swift */,
+				34F715EA290D6517004BD5E0 /* ViewController.swift */,
+				34F715EC290D6517004BD5E0 /* Main.storyboard */,
+				34F715EF290D6518004BD5E0 /* Assets.xcassets */,
+				34F715F1290D6518004BD5E0 /* LaunchScreen.storyboard */,
+				34F715F4290D6518004BD5E0 /* Info.plist */,
+				34F715FB290D655D004BD5E0 /* .swiftlint.yml */,
 			);
-			path = PracticeRX;
+			path = applyLint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		345E3D8328FD85E000EB0689 /* PracticeRX */ = {
+		34F715E2290D6517004BD5E0 /* applyLint */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 345E3D9828FD85E100EB0689 /* Build configuration list for PBXNativeTarget "PracticeRX" */;
+			buildConfigurationList = 34F715F7290D6518004BD5E0 /* Build configuration list for PBXNativeTarget "applyLint" */;
 			buildPhases = (
-				345E3D8028FD85E000EB0689 /* Sources */,
-				345E3D8128FD85E000EB0689 /* Frameworks */,
-				345E3D8228FD85E000EB0689 /* Resources */,
+				34F715FA290D651E004BD5E0 /* SwiftLint */,
+				34F715DF290D6517004BD5E0 /* Sources */,
+				34F715E0290D6517004BD5E0 /* Frameworks */,
+				34F715E1290D6517004BD5E0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PracticeRX;
-			packageProductDependencies = (
-				345054A928FD8A0D00DC2377 /* RxSwift */,
-				3462996428FD91C200DFA07E /* RxCocoa */,
-			);
-			productName = PracticeRX;
-			productReference = 345E3D8428FD85E000EB0689 /* PracticeRX.app */;
+			name = applyLint;
+			productName = applyLint;
+			productReference = 34F715E3290D6517004BD5E0 /* applyLint.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		345E3D7C28FD85E000EB0689 /* Project object */ = {
+		34F715DB290D6517004BD5E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					345E3D8328FD85E000EB0689 = {
+					34F715E2290D6517004BD5E0 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
 				};
 			};
-			buildConfigurationList = 345E3D7F28FD85E000EB0689 /* Build configuration list for PBXProject "PracticeRX" */;
+			buildConfigurationList = 34F715DE290D6517004BD5E0 /* Build configuration list for PBXProject "applyLint" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -129,60 +114,77 @@
 				en,
 				Base,
 			);
-			mainGroup = 345E3D7B28FD85E000EB0689;
-			packageReferences = (
-				345E3D9B28FD894300EB0689 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				342508B029004A52000653D9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-			);
-			productRefGroup = 345E3D8528FD85E000EB0689 /* Products */;
+			mainGroup = 34F715DA290D6517004BD5E0;
+			productRefGroup = 34F715E4290D6517004BD5E0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				345E3D8328FD85E000EB0689 /* PracticeRX */,
+				34F715E2290D6517004BD5E0 /* applyLint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		345E3D8228FD85E000EB0689 /* Resources */ = {
+		34F715E1290D6517004BD5E0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				345E3D9428FD85E100EB0689 /* LaunchScreen.storyboard in Resources */,
-				345E3D9128FD85E100EB0689 /* Assets.xcassets in Resources */,
-				345E3D8F28FD85E000EB0689 /* Main.storyboard in Resources */,
+				34F715FC290D655D004BD5E0 /* .swiftlint.yml in Resources */,
+				34F715F3290D6518004BD5E0 /* LaunchScreen.storyboard in Resources */,
+				34F715F0290D6518004BD5E0 /* Assets.xcassets in Resources */,
+				34F715EE290D6517004BD5E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		34F715FA290D651E004BD5E0 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		345E3D8028FD85E000EB0689 /* Sources */ = {
+		34F715DF290D6517004BD5E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				345E3D8C28FD85E000EB0689 /* ViewController.swift in Sources */,
-				345E3D8828FD85E000EB0689 /* AppDelegate.swift in Sources */,
-				345E3D8A28FD85E000EB0689 /* SceneDelegate.swift in Sources */,
-				3462996728FD939100DFA07E /* DetailViewController.swift in Sources */,
+				34F715EB290D6517004BD5E0 /* ViewController.swift in Sources */,
+				34F715E7290D6517004BD5E0 /* AppDelegate.swift in Sources */,
+				34F715E9290D6517004BD5E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		345E3D8D28FD85E000EB0689 /* Main.storyboard */ = {
+		34F715EC290D6517004BD5E0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				345E3D8E28FD85E000EB0689 /* Base */,
+				34F715ED290D6517004BD5E0 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		345E3D9228FD85E100EB0689 /* LaunchScreen.storyboard */ = {
+		34F715F1290D6518004BD5E0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				345E3D9328FD85E100EB0689 /* Base */,
+				34F715F2290D6518004BD5E0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -190,7 +192,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		345E3D9628FD85E100EB0689 /* Debug */ = {
+		34F715F5290D6518004BD5E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -250,7 +252,7 @@
 			};
 			name = Debug;
 		};
-		345E3D9728FD85E100EB0689 /* Release */ = {
+		34F715F6290D6518004BD5E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -304,7 +306,7 @@
 			};
 			name = Release;
 		};
-		345E3D9928FD85E100EB0689 /* Debug */ = {
+		34F715F8290D6518004BD5E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -313,7 +315,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JPL38XBHJ4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PracticeRX/Info.plist;
+				INFOPLIST_FILE = applyLint/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -324,7 +326,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.led.PracticeRX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.led.applyLint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -332,7 +334,7 @@
 			};
 			name = Debug;
 		};
-		345E3D9A28FD85E100EB0689 /* Release */ = {
+		34F715F9290D6518004BD5E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -341,7 +343,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JPL38XBHJ4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PracticeRX/Info.plist;
+				INFOPLIST_FILE = applyLint/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -352,7 +354,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.led.PracticeRX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.led.applyLint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -363,57 +365,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		345E3D7F28FD85E000EB0689 /* Build configuration list for PBXProject "PracticeRX" */ = {
+		34F715DE290D6517004BD5E0 /* Build configuration list for PBXProject "applyLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				345E3D9628FD85E100EB0689 /* Debug */,
-				345E3D9728FD85E100EB0689 /* Release */,
+				34F715F5290D6518004BD5E0 /* Debug */,
+				34F715F6290D6518004BD5E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		345E3D9828FD85E100EB0689 /* Build configuration list for PBXNativeTarget "PracticeRX" */ = {
+		34F715F7290D6518004BD5E0 /* Build configuration list for PBXNativeTarget "applyLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				345E3D9928FD85E100EB0689 /* Debug */,
-				345E3D9A28FD85E100EB0689 /* Release */,
+				34F715F8290D6518004BD5E0 /* Debug */,
+				34F715F9290D6518004BD5E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		342508B029004A52000653D9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		345E3D9B28FD894300EB0689 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		345054A928FD8A0D00DC2377 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 345E3D9B28FD894300EB0689 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		3462996428FD91C200DFA07E /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 345E3D9B28FD894300EB0689 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 345E3D7C28FD85E000EB0689 /* Project object */;
+	rootObject = 34F715DB290D6517004BD5E0 /* Project object */;
 }
