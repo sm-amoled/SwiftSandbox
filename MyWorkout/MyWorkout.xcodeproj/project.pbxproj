@@ -103,6 +103,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3438C4D12919E9E8007EBAEC /* Refs */ = {
+			isa = PBXGroup;
+			children = (
+				34E44C0628E1E8C80078AD9B /* ControlsView.swift */,
+				3492C25928E3EC6500FA7B28 /* WorkoutManager.swift */,
+				34E44C0228E1D4D40078AD9B /* MetricsView.swift */,
+			);
+			path = Refs;
+			sourceTree = "<group>";
+		};
 		3447286C28E1CB0A006ABB67 = {
 			isa = PBXGroup;
 			children = (
@@ -138,10 +148,7 @@
 				3447288928E1CB0C006ABB67 /* StartView.swift */,
 				34E44C0028E1D3FC0078AD9B /* SessionPagingView.swift */,
 				34E44C0A28E1E9F10078AD9B /* SummaryView.swift */,
-				3492C25928E3EC6500FA7B28 /* WorkoutManager.swift */,
 				34E44C0C28E1EE0E0078AD9B /* ActivityRingsView.swift */,
-				34E44C0228E1D4D40078AD9B /* MetricsView.swift */,
-				34E44C0628E1E8C80078AD9B /* ControlsView.swift */,
 				34E44C0428E1D8550078AD9B /* ElapsedTimeView.swift */,
 				3447288B28E1CB0C006ABB67 /* NotificationController.swift */,
 				3447288D28E1CB0C006ABB67 /* NotificationView.swift */,
@@ -150,6 +157,7 @@
 				3447289628E1CB0D006ABB67 /* Info.plist */,
 				3447289728E1CB0D006ABB67 /* PushNotificationPayload.apns */,
 				3447289328E1CB0D006ABB67 /* Preview Content */,
+				3438C4D12919E9E8007EBAEC /* Refs */,
 			);
 			path = "MyWorkout WatchKit Extension";
 			sourceTree = "<group>";

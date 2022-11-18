@@ -11,6 +11,8 @@ struct MetricsView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     
     var body: some View {
+        TimelineView(<#T##Schedule#>, content: <#T##(SwiftUI.TimelineView<Schedule, Content>) -> Content#>)
+        
         TimelineView(
             MetricsTimelineSchedule(
                 from: workoutManager.builder?.startDate ?? Date()
