@@ -3,7 +3,7 @@
 //  SwipePaging
 //
 //  Created by Park Sungmin on 2022/11/24.
-//
+//  https://medium.com/@sh.soheytizadeh/zoom-uicollectionview-centered-cell-swift-5-e63cad9bcd49
 
 import UIKit
 
@@ -16,6 +16,8 @@ class CollectionViewZoomCellViewController: UIViewController {
     var pages: [String] = []
     
     var centerCell: CustomCollectionViewCell?
+    
+    let generator = UISelectionFeedbackGenerator()
     
     let pageView: UIView = {
         let view = UIView()
@@ -73,9 +75,10 @@ class CollectionViewZoomCellViewController: UIViewController {
         
         let layoutMargins: CGFloat = self.collectionView.layoutMargins.left
         let sideInset = self.view.frame.width / 2 - layoutMargins
-        self.collectionView.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset - 60)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
         
-        scrollViewDidScroll(collectionView)
+//        scrollViewDidScroll(collectionView)
+        scrollToElement(of: IndexPath(row: 0, section: 0))
     }
     
     func cellSelected() {
@@ -83,7 +86,10 @@ class CollectionViewZoomCellViewController: UIViewController {
             return
         }
         
-        pageView.backgroundColor = centerCell?.backgroundColor
+        if pageView.backgroundColor != centerCell?.backgroundColor {
+            generator.selectionChanged()
+            pageView.backgroundColor = centerCell?.backgroundColor
+        }
     }
     
     func showDeleteView(for indexPath: IndexPath) {
@@ -113,9 +119,7 @@ class CollectionViewZoomCellViewController: UIViewController {
     
     @objc func deletePage(_ sender: UIButton) {
         guard let targetPage = centerCell else { return }
-        
-        print(targetPage.indexPathOfCell)
-        
+                
         if colors.count > 1 {
             colors.remove(at: targetPage.indexPathOfCell.row)
         }
@@ -124,6 +128,7 @@ class CollectionViewZoomCellViewController: UIViewController {
         
         let nextPath = IndexPath(row: (targetPage.indexPathOfCell.row - 1 >= 0) ? targetPage.indexPathOfCell.row - 1 : 1,
                                  section: targetPage.indexPathOfCell.section)
+        
         scrollToElement(of: nextPath)
         scrollViewDidScroll(collectionView)
         cancelDeleteMode()
@@ -152,12 +157,12 @@ extension CollectionViewZoomCellViewController {
     }
     
     func scrollToRight() {
-        collectionView.setContentOffset(CGPoint(x: collectionView.contentSize.width - collectionView.bounds.size.width + collectionView.contentInset.right + 60, y: 0), animated: true)
+        collectionView.setContentOffset(CGPoint(x: collectionView.contentSize.width - collectionView.bounds.size.width + collectionView.contentInset.right, y: 0), animated: true)
     }
     
     
     private func scrollToElement(of indexPath: IndexPath) {
-        self.collectionView.scrollToItem(at: indexPath, at: [.left], animated: true)
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 
@@ -170,18 +175,22 @@ extension CollectionViewZoomCellViewController: UICollectionViewDelegate {
                                   y: self.collectionView.frame.size.height / 2 + scrollView.contentOffset.y)
         
         if let indexPath = collectionView.indexPathForItem(at: centerPoint) {
-            self.centerCell = self.collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell
-            centerCell?.transformToLarge()
-            cellSelected()
-            
-            let beforeIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
-            let afterIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-            
-            if let beforeCell = (self.collectionView.cellForItem(at: beforeIndexPath) as? CustomCollectionViewCell) {
-                beforeCell.transformToStandard()
-            }
-            if let afterCell = (self.collectionView.cellForItem(at: afterIndexPath) as? CustomCollectionViewCell) {
-                afterCell.transformToStandard()
+            if indexPath.row == colors.count {
+
+            } else {
+                self.centerCell = self.collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell
+                centerCell?.transformToLarge()
+                cellSelected()
+                
+                let beforeIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
+                let afterIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+                
+                if let beforeCell = (self.collectionView.cellForItem(at: beforeIndexPath) as? CustomCollectionViewCell) {
+                    beforeCell.transformToStandard()
+                }
+                if let afterCell = (self.collectionView.cellForItem(at: afterIndexPath) as? CustomCollectionViewCell) {
+                    afterCell.transformToStandard()
+                }
             }
         }
     }

@@ -3,7 +3,7 @@
 //  SwipePaging
 //
 //  Created by Park Sungmin on 2022/11/24.
-//
+//  https://stackoverflow.com/questions/50231998/uicollectionview-scrolltoitem-to-center-cell-does-not-work-on-horizontal-collec
 
 import UIKit
 
