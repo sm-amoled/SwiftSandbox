@@ -13,6 +13,7 @@
 		34172EA0292A386C009DAAB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34172E9F292A386C009DAAB8 /* Assets.xcassets */; };
 		34172EA3292A386C009DAAB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34172EA1292A386C009DAAB8 /* LaunchScreen.storyboard */; };
 		34172EAD292A38C9009DAAB8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 34172EAC292A38C9009DAAB8 /* SnapKit */; };
+		343170F4293276D1005E66F3 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343170F3293276D1005E66F3 /* testViewController.swift */; };
 		34E11ECD292F834400787316 /* CollectionViewZoomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E11ECC292F834400787316 /* CollectionViewZoomCellViewController.swift */; };
 		34E11ECF292F88F100787316 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E11ECE292F88F100787316 /* UIColor+.swift */; };
 		34E11ED1292F89E600787316 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E11ED0292F89E600787316 /* CustomCollectionViewCell.swift */; };
@@ -27,6 +28,7 @@
 		34172E9F292A386C009DAAB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34172EA2292A386C009DAAB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34172EA4292A386C009DAAB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		343170F3293276D1005E66F3 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		34E11ECC292F834400787316 /* CollectionViewZoomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewZoomCellViewController.swift; sourceTree = "<group>"; };
 		34E11ECE292F88F100787316 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		34E11ED0292F89E600787316 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				34E11ECC292F834400787316 /* CollectionViewZoomCellViewController.swift */,
 				34E11ED2292F8FCE00787316 /* CustomUICollectionViewFlowLayout.swift */,
 				34E11ED0292F89E600787316 /* CustomCollectionViewCell.swift */,
+				343170F3293276D1005E66F3 /* testViewController.swift */,
 				34172E9F292A386C009DAAB8 /* Assets.xcassets */,
 				34172EA1292A386C009DAAB8 /* LaunchScreen.storyboard */,
 				34172EA4292A386C009DAAB8 /* Info.plist */,
@@ -164,6 +167,7 @@
 			files = (
 				34172E9B292A386B009DAAB8 /* ViewController.swift in Sources */,
 				34E11ED1292F89E600787316 /* CustomCollectionViewCell.swift in Sources */,
+				343170F4293276D1005E66F3 /* testViewController.swift in Sources */,
 				34E11ED3292F8FCE00787316 /* CustomUICollectionViewFlowLayout.swift in Sources */,
 				34172E97292A386B009DAAB8 /* AppDelegate.swift in Sources */,
 				34172E99292A386B009DAAB8 /* SceneDelegate.swift in Sources */,

@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 class CollectionViewZoomCellViewController: UIViewController {
-    //    var colors = ["#FA4F79", "#FC676B", "#FF6844", "#FA975C", "#FDA84B", "#FDA84B", "#EDC32B", "#EDD70E", "#C3CB16", "#A2C41F", "#8BCD1F", "#8BCD1F", "#25C43F", "#30CF7A", "#4AE6AC", "#3BEABC", "#25DCBC", "#25CDBE", "#4AE2DF", "#30D2DC", "#02A7BE", "#30B4D4", "#2DBAEE", "#54B4FE", "#97BEFF", "#90A2FE", "#C3BCFC", "#DBC5FE", "#CD82FA", "#E885F9", "#FF42F8", "#FA5ADA", "#FF97DA", "#FB89C1", "#FBA5C3"]
-    var colors = ["#FA4F79", "#FC676B", "#FF6844"]
+    var colors = ["#FA4F79", "#FC676B", "#FF6844", "#FA975C", "#FDA84B", "#FDA84B", "#EDC32B", "#EDD70E", "#C3CB16", "#A2C41F", "#8BCD1F", "#8BCD1F", "#25C43F", "#30CF7A", "#4AE6AC", "#3BEABC", "#25DCBC", "#25CDBE", "#4AE2DF", "#30D2DC", "#02A7BE", "#30B4D4", "#2DBAEE", "#54B4FE", "#97BEFF", "#90A2FE", "#C3BCFC", "#DBC5FE", "#CD82FA", "#E885F9", "#FF42F8", "#FA5ADA", "#FF97DA", "#FB89C1", "#FBA5C3"]
+    //    var colors = ["#FA4F79", "#FC676B", "#FF6844"]
     
     var pages: [String] = []
     
@@ -77,7 +77,7 @@ class CollectionViewZoomCellViewController: UIViewController {
         let sideInset = self.view.frame.width / 2 - layoutMargins
         self.collectionView.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
         
-//        scrollViewDidScroll(collectionView)
+        //        scrollViewDidScroll(collectionView)
         scrollToElement(of: IndexPath(row: 0, section: 0))
     }
     
@@ -119,7 +119,7 @@ class CollectionViewZoomCellViewController: UIViewController {
     
     @objc func deletePage(_ sender: UIButton) {
         guard let targetPage = centerCell else { return }
-                
+        
         if colors.count > 1 {
             colors.remove(at: targetPage.indexPathOfCell.row)
         }
@@ -176,7 +176,7 @@ extension CollectionViewZoomCellViewController: UICollectionViewDelegate {
         
         if let indexPath = collectionView.indexPathForItem(at: centerPoint) {
             if indexPath.row == colors.count {
-
+                
             } else {
                 self.centerCell = self.collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell
                 centerCell?.transformToLarge()
@@ -220,7 +220,7 @@ extension CollectionViewZoomCellViewController: UICollectionViewDataSource {
 
 extension CollectionViewZoomCellViewController: CustomAddCollectionViewCellDelegate {
     func tapAddPageButton() {
-        colors.append("#CCCCCC")
+        colors.append(colors.randomElement()!)
         collectionView.reloadData()
         scrollToRight()
     }
