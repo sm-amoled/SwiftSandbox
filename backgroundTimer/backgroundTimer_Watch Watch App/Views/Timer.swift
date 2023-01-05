@@ -31,33 +31,35 @@ struct TimerView: View {
                 Spacer()
                 
                 // Time Labels
-                if isLuminanceReduced {
-                    TimelineView(.periodic(from: .now, by: 1)) { context in
-                        Text("\(timerModel.timerLeftStringValue)")
-                            .font(.system(size: 60, weight: .medium))
-                        
-                        Spacer()
-                    }
-                } else {
-                    VStack(spacing: -5) {
-                        Text("\(timerModel.timerTotalStringValue)")
-                            .font(.system(size: 20))
-                            .foregroundColor(.gray)
-                        Text("\(timerModel.timerLeftStringValue)")
-                            .font(.system(size: 50, weight: .medium))
-                    }
-
-                    // Skip Add Button
-                    HStack {
-                        Button("Skip") {
-                            timerModel.skipTimer()
+                TimelineView(.periodic(from: .now, by: 0.5)) { context in
+                    if context.cadence == .live {
+                        VStack(spacing: -5) {
+                            Text("\(timerModel.timerTotalStringValue)")
+                                .font(.system(size: 20))
+                                .foregroundColor(.gray)
+                            Text("\(timerModel.timerLeftStringValue)")
+                                .font(.system(size: 50, weight: .medium))
                         }
-                        Button("+30s") {
-                            timerModel.addExtraTime()
+                    } else {
+                        TimelineView(.periodic(from: .now, by: 1)) { context in
+                            Text("\(timerModel.timerLeftStringValue)")
+                                .font(.system(size: 60, weight: .medium))
+                            
+                            Spacer()
                         }
                     }
                 }
-               
+                
+                // Skip Add Button
+                HStack {
+                    Button("Skip") {
+                        timerModel.skipTimer()
+                    }
+                    Button("+30s") {
+                        timerModel.addExtraTime()
+                    }
+                }
+                
                 // StartPauseReset Button
                 Button {
                     switch timerModel.timerState {
@@ -105,6 +107,8 @@ struct TimerView: View {
                 
                 if timerModel.timerState == .run {
                     let currentTimeStampDifference = Date().timeIntervalSince(latActiveTimeStamp)
+                    print("stamp 2")
+                    print(currentTimeStampDifference)
                     
                     if timerModel.leftSeconds - Int(currentTimeStampDifference) <= 0 {
                         timerModel.timerState = .finish
@@ -112,34 +116,28 @@ struct TimerView: View {
                         
                         timerModel.skipTimer()
                     } else {
-//                        timerModel.leftSeconds -= Int(currentTimeStampDifference)
+                        if timerModel.isScenePhaseFromBackground {
+                            timerModel.leftSeconds -= Int(currentTimeStampDifference)
+                            timerModel.isScenePhaseFromBackground = false
+                        }
+                        
+                        timerModel.setNotification(for: timerModel.leftSeconds)
                     }
                 }
                 
             case .background:
                 print("background mode")
-                if timerModel.timerState == .run
-                    && scenePhase == .inactive {
+                
+                if !timerModel.isScenePhaseFromBackground {
+                    print("stamp 1")
                     latActiveTimeStamp = Date()
                 }
                 
+                timerModel.isScenePhaseFromBackground = true
                 
             @unknown default:
                 print("unknown mode")
             }
         }
     }
-}
-
-func setOneTimeNotification(timeFor: Double) {
-    let content = UNMutableNotificationContent()
-    content.title = "쉬는 시간 완료!"
-    content.subtitle = "다음 세트를 준비해주세요"
-    content.sound = UNNotificationSound.default
-    if timeFor <= 1 { return }
-    
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeFor), repeats: false)
-    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-    
-    UNUserNotificationCenter.current().add(request)
 }
